@@ -1,19 +1,20 @@
-const TileTwo = ({photos}) => {
+const TileTwo = (props) => {
     return(
-        <section>
-            {
-                <>
+        <section  className="tile">
+            <>
                 {
-                    photos.map(singlePhoto => {
+                    props.photos.map(singlePhoto => {
                         return (
-                        <div className="photo-container" key={singlePhoto.id}>
-                            <img src={singlePhoto.urls.small} alt={singlePhoto.alt_description} />
+                        <div className="box" key={singlePhoto.id}> 
+                            <div className="image-container">
+                                <img src={singlePhoto.urls.small} alt={singlePhoto.alt_description} />
+                            </div>
+                            <div className="back"></div>
                         </div>
                         )
                     })
                 }
-                </>  
-            }
+            </>  
         </section>       
     )
 }

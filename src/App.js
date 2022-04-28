@@ -1,4 +1,5 @@
-import './App.css';
+import './styles/sass/App.scss';
+
 
 // Modules:
 import { useEffect, useState } from 'react';
@@ -21,7 +22,7 @@ function App() {
       params: {
         client_id: '3-B5WhPSmJkkSBV3G3AWDnf1wcdjZSPALyHjFShogn4',
         query:'puppies',
-        per_page: 2
+        per_page: 4
       }
     }).then(response => {
       // console.log(response);
@@ -32,25 +33,18 @@ function App() {
     })
   }, []);
 
-  // const getPhotos = (event, orientationChoice) => {
-  //   event.preventDefault();
-
-  //   const copyOfPhotos = [...allPhotos]
-  //   const photosFiltered = copyOfPhotos.filter(singlePhoto => {
-  //     return singlePhoto.orientation === orientationChoice
-  //   })
-
-  //   setFilteredPhotos(photosFiltered)
-  // }
-
-
 
   return (
     <div className="App">
-      <h1>Memory Game</h1>
-      <div className="results">
-        <TileOne photos={allPhotos} />
-        {/* <TileTwo photos={allPhotos} /> */}
+      <header>
+        <h1>Memory Game</h1>
+        <h2>Flip the tiles to find a matching set!</h2>
+      </header>
+      <div className="wrapper">
+        <div className="gameboard">
+          <TileOne photos={allPhotos} />
+          {/* <TileTwo photos={allPhotos} /> */}
+        </div>
       </div>
     </div>
   );

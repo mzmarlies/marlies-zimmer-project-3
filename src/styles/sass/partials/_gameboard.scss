@@ -1,0 +1,16 @@
+.gameboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+
+    .tile {
+        display: flex;
+    }
+
+    .box {
+        display: flex;
+        margin: 10px;
+    }
+}

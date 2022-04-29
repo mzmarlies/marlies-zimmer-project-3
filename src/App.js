@@ -6,14 +6,17 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 // Components:
-import TileOne from './components/TileOne';
+import Tile from './components/Tile';
 // import TileTwo from './components/TileTwo';
 
 
 function App() {
   const [allPhotos, setAllPhotos] = useState([]);
-  // const [filteredPhotos, setFilteredPhotos] = useState([])
 
+  // setting the game tiles to an empty array to store the image copies in (the matching tiles)
+  const [gameTiles, setGameTiles] = useState([]);
+  
+  // making a call to the API 
   useEffect (() => {
     axios({
       url: 'https://api.unsplash.com/search/photos',
@@ -22,18 +25,29 @@ function App() {
       params: {
         client_id: '3-B5WhPSmJkkSBV3G3AWDnf1wcdjZSPALyHjFShogn4',
         query:'puppies',
-        per_page: 4
+        per_page: 6
       }
     }).then(response => {
       // console.log(response);
         const responsedata = response.data.results
         console.log('responsedata', responsedata)
 
-        setAllPhotos(responsedata);
+        setAllPhotos(responsedata)
     })
   }, []);
 
 
+
+  // const copyOfPhotos = [...allPhotos];
+  // const fullGameboard = copyOfPhotos.map(photo => {
+  //   return {...photo};
+  // })
+  
+  // setGameTiles(fullGameboard)
+
+
+
+// returning the data in JSX
   return (
     <div className="App">
       <header>
@@ -42,8 +56,7 @@ function App() {
       </header>
       <div className="wrapper">
         <div className="gameboard">
-          <TileOne photos={allPhotos} />
-          {/* <TileTwo photos={allPhotos} /> */}
+          <Tile photos={allPhotos} />
         </div>
       </div>
     </div>

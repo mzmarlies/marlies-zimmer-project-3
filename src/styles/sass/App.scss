@@ -1,8 +1,8 @@
 @import './partials/variables';
 // variables has to go first (because of cascading), needs to be read before you can implment elsewhere)
-@import './partials/baseStyles';
 @import './partials/tiles';
 @import './partials/gameboard';
+@import './partials/baseStyles';
 
 
 

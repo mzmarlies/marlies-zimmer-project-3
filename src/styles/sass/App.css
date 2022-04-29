@@ -1,0 +1,114 @@
+.box {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+.box .image-container,
+.box .inactive {
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: 2s;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.box .image-container {
+  z-index: 3;
+}
+.box img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  z-index: 3;
+}
+.box .back,
+.box .inactive {
+  background-color: navy;
+  z-index: 2;
+  border-radius: 10px;
+}
+.box .active {
+  transform: perspective(1000px) rotateY(-180deg);
+  z-index: 1;
+}
+
+.gameboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.gameboard .tile {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gameboard .box {
+  display: flex;
+  margin: 10px;
+}
+
+body {
+  background-color: peachpuff;
+}
+body h1 {
+  color: darkgreen;
+  font-size: 50px;
+}
+body img {
+  width: 100%;
+  height: 100%;
+}
+body .wrapper {
+  max-width: 1280px;
+  width: 65%;
+  margin: 0 auto;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    -webkit-animation: App-logo-spin infinite 20s linear;
+            animation: App-logo-spin infinite 20s linear;
+  }
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@-webkit-keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=App.css.map */

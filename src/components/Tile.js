@@ -4,6 +4,8 @@ const Tile = (props) => {
     const [userChoice, setUserChoice] = useState([]);
     const [secondChoice, setSecondChoice] = useState([])
 
+    // let index = 0;
+
     let classes = 'inactive'
        
     const handleUserChoice = (event) => {
@@ -17,9 +19,11 @@ const Tile = (props) => {
 
         if (userChoice === secondChoice) {
             console.log(`it's a match!`)
-        } else {
-            console.log('try again!')
-        }
+        } 
+        // else {
+        //     console.log('try again!')
+        // }
+        
         // can now compare these two. If they equal each other can do the css animation.
         // className = className + 'class-here'
         //  += adds something to the variable
@@ -33,7 +37,7 @@ const Tile = (props) => {
         <section className="tile">
             <>
                 {
-                    props.photos.map(singlePhoto => {
+                    props.tiles.map(singlePhoto => {
                         
                         return (
                             <div 
@@ -60,5 +64,12 @@ const Tile = (props) => {
     )
 }
 
+// const TileCopies = (props) => {
+//     const [copies, setCopies] = useState([])
+
+//     return(
+//         TileCopies.push(Tile)
+//     )
+// }
 
 export default Tile;

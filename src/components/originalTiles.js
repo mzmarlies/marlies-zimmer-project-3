@@ -1,7 +1,16 @@
+import { useState } from "react";
+
 let classes = 'inactive'
 
 
 const OriginalTiles = (props) => {
+    const [userChoice, setUserChoice] = useState([]);
+
+    const handleFirstChoice = (event) => {
+        classes += 'active'
+        setUserChoice(event.target.value);
+        console.log('user clicked an image from original array');
+    }
     return(
         <>
             {
@@ -10,9 +19,13 @@ const OriginalTiles = (props) => {
                         <div 
                             className="box"
                             key={onePhoto.id}
+                            onClick={handleFirstChoice}
+                            value={userChoice}
                         >
                             <div className={classes}>
-                                <img src={onePhoto.urls.small} alt={onePhoto.alt_description} />
+                                <div className="tile-cover">
+                                    <img src={onePhoto.urls.small} alt={onePhoto.alt_description} />
+                                </div>
                             </div>
                         </div>
                     )

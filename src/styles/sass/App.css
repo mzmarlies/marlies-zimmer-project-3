@@ -3,30 +3,30 @@
   height: 200px;
   position: relative;
 }
-.box .active,
-.box .inactive {
-  border-radius: 10px;
+.box .tile-cover {
   width: 100%;
   height: 100%;
   display: block;
   position: absolute;
-  transition: 2s;
+  border-radius: 10px;
 }
-.box img {
+.box .tile-cover img {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;
-  transform: perspective(1000px) rotateY(180deg);
+}
+.box .active .tile-cover img {
+  display: block;
 }
 .box .inactive {
+  width: 100%;
+  height: 100%;
+  display: block;
   background-color: navy;
-  transform: perspective(1000px) rotateY(180deg);
-  z-index: 10;
   border-radius: 10px;
 }
-.box .active {
-  transform: perspective(1000px) rotateY(-180deg);
-  z-index: 1;
+.box .inactive .tile-cover img {
+  display: none;
 }
 
 .gameboard {

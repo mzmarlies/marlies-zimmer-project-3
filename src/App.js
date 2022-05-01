@@ -8,6 +8,7 @@ import axios from 'axios';
 // importing components:
 import OriginalTiles from './components/OriginalTiles';
 import DuplicateTiles from './components/DuplicateTiles';
+// import CardFlip from './components/CardFlip';
 
 
 function App() {
@@ -17,7 +18,15 @@ function App() {
 
   // creating an empty array that will store the copies of the images:
   const [ copiedImages, setCopiedImages ] = useState([]);
-  
+
+  // creating an array to store both copies and originals:
+  const [ mergedImages, setMergedImages ] = useState([]);
+
+  // listen for user choice and store matching logic in a function:
+  // const [ userChoice, setUserChoice ] = useState([]);
+  const [ imageMatch, setImageMatch ] = useState([]);
+
+   
   // calling the API:
   useEffect (() => {
     axios({
@@ -32,27 +41,37 @@ function App() {
     }).then(response => {
       const responsedata = response.data.results
 
-      // putting the responsedata into firstImages:
+      // putting the responsedata into firstImages and storing the initial batch of images in the setFirstImage state:
       const firstImages = responsedata;
-
-      // storing the initial batch of images in the setFirstImage state:
+      let { urls, id } = firstImages;
       setFirstImages(firstImages);
+      // console.log('first images', firstImages)
 
-      // mapping over the data stored in the first images and accessing the image urls:
+      // mapping over the data stored in the first images and accessing the image urls; storing these urls in the setCopiedImages state:
       const copiedImages = firstImages.map((object) => {
         return object.urls.small
       });
-
-      // storing these urls in the setCopiedImages state
       setCopiedImages(copiedImages);
+      // console.log('copied images', copiedImages)
 
-      console.log('these are originals', firstImages);
-      console.log('these are copies', copiedImages);
+      // merging the two arrays, store in the setMergedImages state:
+      const combinedImages = firstImages.concat(copiedImages);
+      setMergedImages(mergedImages)
+
+      const imageMatch = combinedImages.map(index => {
+          if(firstImages.urls === copiedImages.index) {
+          console.log(`it's a match`);
+        }
+      })
+      console.log(imageMatch);
+      
+      // console.log('these are merged', combinedImages)
 
     })
     
   }, []);
 
+  
   // returning JSX to the page:
   return(
     <div className="App">
@@ -62,7 +81,6 @@ function App() {
       </header>
       <div className="wrapper">
         <div className="gameboard">
-          {/* <OriginalTiles photos={singlePhoto} /> */}
           <OriginalTiles photos={firstImages} />
           <DuplicateTiles duplicates={copiedImages} />
         </div>

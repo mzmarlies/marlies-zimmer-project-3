@@ -23,25 +23,3 @@ const OriginalTiles = (props) => {
 }
 
 export default OriginalTiles;
-// {
-// props.tiles.map(singlePhoto => {
-    
-//     return (
-//         <div 
-//             onClick={handleUserChoice} 
-//             className="box" 
-//             key={singlePhoto.id}
-//             value={userChoice}
-//             data-test={singlePhoto.id} >
-
-//             <div className="inactive"></div>
-
-            
-//             <div className={classes}>
-//                 <img src={singlePhoto.urls.small} alt={singlePhoto.alt_description} />
-//             </div>
-            
-//         </div>
-//     )
-// })
-// }

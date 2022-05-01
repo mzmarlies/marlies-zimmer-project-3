@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 // importing components:
-import OriginalTiles from './components/originalTiles';
+import OriginalTiles from './components/OriginalTiles';
 import DuplicateTiles from './components/DuplicateTiles';
 
 
@@ -50,11 +50,8 @@ function App() {
       console.log('these are copies', copiedImages);
 
     })
+    
   }, []);
-  
-  // const singlePhoto = (event) => {
-  //   event.preventDefault();
-  // }
 
   // returning JSX to the page:
   return(
@@ -73,7 +70,6 @@ function App() {
     </div>
   );
 }
-
 
 
 export default App;

@@ -4,13 +4,17 @@ let classes = 'inactive'
 
 
 const DuplicateTiles = (props) => {
-    const [userChoice, setUserChoice] = useState([]);
+    // const [userChoice, setUserChoice] = useState([]);
 
-    const handleSecondChoice = (event) => {
-        classes += 'active'
-        setUserChoice(event.target.value);
-        console.log('user clicked an image from copies array');
-    }
+    // const handleSecondChoice = (event) => {
+    //     setUserChoice(event.target.value);
+    //     console.log('user clicked an image from copies array');
+    //      if(setUserChoice) {
+    //         classes += 'active' 
+    //     } else {
+    //         classes = 'inactive';
+    //     }
+    // }
     return(
         <>
             {
@@ -18,11 +22,11 @@ const DuplicateTiles = (props) => {
                     return(
                         <div 
                             // onClick={() => {<HandleClick />}}
-                            onClick={handleSecondChoice}
+                            onClick={props.flip}
                             className="box"
                             key={index}
                             // value={<HandleClick />}
-                            value={userChoice}
+                            // value={userChoice}
                             >
                             <div className={classes}>
                                 <div className="tile-cover">

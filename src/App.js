@@ -9,6 +9,7 @@ import axios from 'axios';
 import OriginalTiles from './components/OriginalTiles';
 import DuplicateTiles from './components/DuplicateTiles';
 // import CardFlip from './components/CardFlip';
+import Tiles from './components/Tiles';
 
 
 function App() {
@@ -58,18 +59,47 @@ function App() {
       const combinedImages = firstImages.concat(copiedImages);
       setMergedImages(mergedImages)
 
-      const imageMatch = combinedImages.map(index => {
-          if(firstImages.urls === copiedImages.index) {
-          console.log(`it's a match`);
-        }
-      })
-      console.log(imageMatch);
+
+      // const imageMatch = combinedImages.map(index => {
+      //     if(firstImages.urls === copiedImages.index) {
+      //     console.log(`it's a match`);
+      //   }
+      // })
+      // console.log(imageMatch);
+
+      
+        combinedImages.map((singleImage) => {
+          const cardFlip = (image) => {
+            console.log(image);
+          }
+
+          return (
+            <DuplicateTiles flip={() => cardFlip(singleImage)} />
+          )
+
+        })
+
       
       // console.log('these are merged', combinedImages)
 
     })
     
   }, []);
+
+
+  const [userChoice, setUserChoice] = useState([]);
+
+  let classes = 'inactive';
+
+  const handleChoice = (event) => {
+      setUserChoice(event.target.value);
+      console.log('user clicked an image');
+      if(setUserChoice) {
+            classes += 'active' 
+        } else {
+            classes = 'inactive';
+        }
+    }
 
   
   // returning JSX to the page:
@@ -81,8 +111,8 @@ function App() {
       </header>
       <div className="wrapper">
         <div className="gameboard">
-          <OriginalTiles photos={firstImages} />
-          <DuplicateTiles duplicates={copiedImages} />
+          <OriginalTiles photos={firstImages} flip={handleChoice}/>
+          <DuplicateTiles duplicates={copiedImages} flip={handleChoice}  />
         </div>
       </div>
     </div>

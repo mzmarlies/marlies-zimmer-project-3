@@ -2,28 +2,41 @@ import { useState } from "react";
 
 const SingleTile = (props) => {
 
-    const [flipState, setFlipState] = useState('inactive');
+    const [flipState, setFlipState] = useState(false);
 
-    const handleClick = () => {
-      console.log(flipState)
-    if(flipState === 'inactive') {
-        setFlipState('active')
-    } else {
-        setFlipState('inactive')
+    const handleClick = (value) => {
+        if(value.matched === false) {
+            props.compareImage(value)
+            setFlipState(!flipState)
+        }
     }
-  }
+
+    let matchedCriteria 
+    if(props.onePhoto.match === true){
+        matchedCriteria = true
+    } else if(flipState === true){
+        matchedCriteria = true
+    } else {
+        matchedCriteria = false
+    }
+
+    console.log(props)
+
     return(
         <div 
             className="box"
-            onClick={handleClick}
+            onClick={() => {handleClick(props.onePhoto)}}
         >
 
-            <div className={flipState}>
+            <div className={matchedCriteria ? 'active' : 'inactive'}>
                 <div className="tile-cover">
-                    <img src={props.onePhoto.urls.small} alt={props.onePhoto.alt_description} key={props.onePhoto.id} />
+                    <img 
+                        src={props.onePhoto.urls.small} 
+                        alt={props.onePhoto.alt_description} 
+                        key={props.onePhoto.id} 
+                    />
                 </div>
             </div>
-            
             
         </div>
     )

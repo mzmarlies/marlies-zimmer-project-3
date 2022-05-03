@@ -18,6 +18,7 @@
 
     .active {
         .tile-cover {
+            transform: perspective(1000px) rotateY(180deg);
             img {
                 display: block;
             }
@@ -33,7 +34,6 @@
         .tile-cover {
             img {
                 display: none;
-                
             }
         }
     }

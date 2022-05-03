@@ -4,24 +4,11 @@ import axios from 'axios';
 
 // COMPONENTS:
 import OriginalTiles from './OriginalTiles';
-import DuplicateTiles from './DuplicateTiles';
-// import HandleClick from './HandleClick';
 
 const ApiImages = () => {
 
-  // array for images from API:
-  const [ firstImages, setFirstImages ] = useState([]);
-
-  // array for image copies:
-  const [ copiedImages, setCopiedImages ] = useState([]);
-
   // array to store both copies and originals:
   const [ mergedImages, setMergedImages ] = useState([]);
-
-  // listen for user choice and store matching logic in a function:
-//   const [ imageMatch, setImageMatch ] = useState([]);
-
-    // const [flipState, setFlipState] = useState('inactive');
 
    
   // API call:
@@ -39,45 +26,65 @@ const ApiImages = () => {
       const responsedata = response.data.results
 
       // putting the responsedata into firstImages and storing the initial batch of images in the setFirstImage state:
-      const firstImages = responsedata;
-      let { urls, id } = firstImages;
-      setFirstImages(firstImages);
-    //   console.log('first images', firstImages)
+      const firstImages = responsedata.map((image, index) => {
+        return {
+          ...image,
+          matched: false
+          // setting a default state for data object
+        }
+      });
+
+
 
       // mapping over the data stored in the first images and accessing the image urls; storing these urls in the setCopiedImages state:
-      const copiedImages = firstImages.map((object) => {
-        return object.urls.small
+    
+      const copiedImages = firstImages.map((image, index) => {
+        return {
+          // allows you to take the props from the original object to change them.
+          ...image, 
+          id: index
+        }
       });
-      setCopiedImages(copiedImages);
-    //   console.log('copied images', copiedImages)
 
-      // merging the two arrays, store in the setMergedImages state:
       const combinedImages = firstImages.concat(copiedImages);
-      setMergedImages(mergedImages)
-      
-        // combinedImages.filter((singleImage) => {
-        //     for(let i = 0; i < combinedImages.length; i++) {
-                
-        //     }
-            
-        // })
-
-      console.log('these are merged', combinedImages)
+      setMergedImages(combinedImages)
 
     })
     
   }, []);
+
+  // get value from array 
+  // set its 'matched' property to true
+ // Trying to implement the flip back:
+ // get value from array 
+  // set its 'matched' property to true
+  // 'condition' will refer to whether it's true or false
+  const handleMatchCondition = (tile, condition) => {
+    const value = mergedImages.find((element) => {
+      // 'element' is the iterator in 'find' call
+      return element.id === tile.id 
+    }) 
+    const index = mergedImages.findIndex((element) => {
+      return element.id === tile.id 
+    })
+    value.matched = condition;
+    const oldState = mergedImages;
+    oldState[index] = value;
+    setMergedImages(oldState)
+  }
 
    // returning JSX to the page:
   return(
     <div className="App">
       <div className="wrapper">
         <div className="gameboard">
-          <OriginalTiles photos={firstImages} />
-          <DuplicateTiles duplicates={copiedImages} />
+          <OriginalTiles 
+            photos={mergedImages} 
+            matchCondition={handleMatchCondition} />
         </div>
       </div>
     </div>
   );
 }
 export default ApiImages;
+

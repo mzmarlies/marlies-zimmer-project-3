@@ -1,10 +1,12 @@
 .gameboard {
-    width: 85%;
+    width: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 50px auto;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 0;
     // position: relative;
 
     .tile {

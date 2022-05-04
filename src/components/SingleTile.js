@@ -9,7 +9,14 @@ const SingleTile = (props) => {
             props.compareImage(value)
             setFlipState(!flipState)
         }
+        setTimeout(() => {
+            if(value.matched === false) {
+                props.compareImage(value)
+                setFlipState(flipState)
+            }
+        }, 3000);
     }
+
 
     let matchedCriteria 
     if(props.onePhoto.match === true){

@@ -19,8 +19,8 @@ const ApiImages = () => {
       dataResponse:'json',
       params: {
         client_id: '3-B5WhPSmJkkSBV3G3AWDnf1wcdjZSPALyHjFShogn4',
-        query:'animals',
-        per_page: 6
+        query:'planets',
+        per_page: 9
       }
     }).then(response => {
       const responsedata = response.data.results

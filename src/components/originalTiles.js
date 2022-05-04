@@ -28,7 +28,6 @@ const OriginalTiles = (props) => {
             if(dataComparison[0].urls.full === dataComparison[1].urls.full) {
                 // set interval optional to have 
                 console.log('matched')
-
                 props.matchCondition(dataComparison[0], true);
                 props.matchCondition(dataComparison[1], true);
                 // once cniditons are true, clear it out
@@ -61,6 +60,3 @@ const OriginalTiles = (props) => {
 }
 
 export default OriginalTiles;
-
-//  could do a set timeout fucntion
-// then the values get removed

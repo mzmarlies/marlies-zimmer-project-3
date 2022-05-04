@@ -25,14 +25,14 @@ const ApiImages = () => {
     }).then(response => {
       const responseData = response.data.results
       // Putting the responsedata into firstImages and storing the initial batch of images in the setFirstImage state:
-      const firstImages = responseData.map((image) => {
+      const firstImages = responseData.map((image, index) => {
         return {
           ...image,
           // Setting a default state for data object:
           matched: false,
           selected: false
         }
-      })
+      });
 
       // Mapping over the data stored in the first images and accessing the image urls; storing these urls in the setCopiedImages state:
       const copiedImages = firstImages.map((image, index) => {

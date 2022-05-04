@@ -54,11 +54,14 @@
   margin: 10px;
 }
 
-.full-page {
-  background-image: url(/assets/background2.jpg);
+body {
+  background-image: url(/assets/background.jpg);
   background-position: center;
   background-size: cover;
   font-size: 125%;
+}
+
+.full-page {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -67,7 +70,8 @@
 
 .content {
   flex-direction: column;
-  align-items: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 
 h1 {
@@ -103,6 +107,7 @@ footer {
   background-color: navy;
   margin-bottom: 0;
   padding: 10px;
+  margin-top: 20px;
 }
 footer a {
   text-align: center;

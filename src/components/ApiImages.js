@@ -7,7 +7,7 @@ import OriginalTiles from './OriginalTiles';
 
 const ApiImages = () => {
 
-  // array to store both copies and originals:
+  // Array to store both copies and originals:
   const [ mergedImages, setMergedImages ] = useState([]);
 
    
@@ -23,21 +23,18 @@ const ApiImages = () => {
         per_page: 9
       }
     }).then(response => {
-      const responsedata = response.data.results
-
-      // putting the responsedata into firstImages and storing the initial batch of images in the setFirstImage state:
-      const firstImages = responsedata.map((image, index) => {
+      const responseData = response.data.results
+      // Putting the responsedata into firstImages and storing the initial batch of images in the setFirstImage state:
+      const firstImages = responseData.map((image) => {
         return {
           ...image,
-          matched: false
-          // setting a default state for data object
+          // Setting a default state for data object:
+          matched: false,
+          selected: false
         }
-      });
+      })
 
-
-
-      // mapping over the data stored in the first images and accessing the image urls; storing these urls in the setCopiedImages state:
-    
+      // Mapping over the data stored in the first images and accessing the image urls; storing these urls in the setCopiedImages state:
       const copiedImages = firstImages.map((image, index) => {
         return {
           // allows you to take the props from the original object to change them.
@@ -47,40 +44,58 @@ const ApiImages = () => {
       });
 
       const combinedImages = firstImages.concat(copiedImages);
-      setMergedImages(combinedImages)
+
+      // Randomize array order:
+      const shuffle = (array) => {
+        let currentIndex = array.length, randomIndex;
+        // While there remain elements to shuffle:
+        while (currentIndex !== 0) {
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+          // Swap it wiht the current element:
+          [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]]
+        }
+        return array;
+      }
+
+      setMergedImages(shuffle(combinedImages));
 
     })
     
   }, []);
 
-  // get value from array 
-  // set its 'matched' property to true
- // Trying to implement the flip back:
- // get value from array 
-  // set its 'matched' property to true
-  // 'condition' will refer to whether it's true or false
+  // Logic to determine tile matches:
+  // get value from array:
+  // ('element' is the iterator in 'find' call)
   const handleMatchCondition = (tile, condition) => {
-    const value = mergedImages.find((element) => {
-      // 'element' is the iterator in 'find' call
-      return element.id === tile.id 
-    }) 
-    const index = mergedImages.findIndex((element) => {
-      return element.id === tile.id 
-    })
+    const value = mergedImages.find((element) => element.id === tile.id) 
+    const index = mergedImages.findIndex((element) => element.id === tile.id)
+     // ('condition' will refer to whether the value is true or false)
     value.matched = condition;
     const oldState = mergedImages;
     oldState[index] = value;
     setMergedImages(oldState)
   }
 
-   // returning JSX to the page:
+  // Logic to determine tile's position (flipped up or down)
+  const handleTileCondition = (tile) => {
+    const value = mergedImages.find((element) => element.id === tile.id)
+    const index = mergedImages.findIndex((element) => element.id === tile.id)
+    value.selected = !value.selected;
+    const oldState = mergedImages;
+    oldState[index] = value;
+    setMergedImages(oldState)
+  }
+   // Returning JSX to the page:
   return(
     <div className="App">
       <div className="wrapper">
         <div className="gameboard">
           <OriginalTiles 
             photos={mergedImages} 
-            matchCondition={handleMatchCondition} />
+            matchCondition={handleMatchCondition} 
+            tileCondition={handleTileCondition}
+          />
         </div>
       </div>
     </div>

@@ -1,41 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SingleTile = (props) => {
 
-    const [flipState, setFlipState] = useState(false);
+    const [ flipState, setFlipState ] = useState(false);
+    const [ matchedCriterion, setMatchedCriterion ] = useState(false)
+
+    useEffect(() => {
+        setMatchedCriterion(props.onePhoto.selected)
+    }, [props.onePhoto.selected])
+
 
     const handleClick = (value) => {
         if(value.matched === false) {
             props.compareImage(value)
             setFlipState(!flipState)
         }
-        setTimeout(() => {
-            if(value.matched === false) {
-                props.compareImage(value)
-                setFlipState(flipState)
-            }
-        }, 3000);
+        props.handleTileSelection(value)
     }
-
-
-    let matchedCriteria 
-    if(props.onePhoto.match === true){
-        matchedCriteria = true
-    } else if(flipState === true){
-        matchedCriteria = true
-    } else {
-        matchedCriteria = false
-    }
-
-    console.log(props)
 
     return(
         <div 
             className="box"
             onClick={() => {handleClick(props.onePhoto)}}
         >
-
-            <div className={matchedCriteria ? 'active' : 'inactive'}>
+            <div className={ matchedCriterion ? 'active' : 'inactive'}>
                 <div className="tile-cover">
                     <img 
                         src={props.onePhoto.urls.small} 
@@ -43,8 +31,7 @@ const SingleTile = (props) => {
                         key={props.onePhoto.id} 
                     />
                 </div>
-            </div>
-            
+            </div>          
         </div>
     )
 }

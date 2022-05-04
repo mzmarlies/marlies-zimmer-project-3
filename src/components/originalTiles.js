@@ -10,9 +10,7 @@ const OriginalTiles = (props) => {
         // function variables: 
         const oldState = dataComparison;
         // one-off functions:
-        const index = oldState.findIndex((element) => {
-           return element.id === data.id   
-        })
+        const index = oldState.findIndex((element) => element.id === data.id )
 
         // will return -1 if it doesnt exist, but will give us a valid position if it does exist
         // will prevent a double click 'match'
@@ -20,29 +18,27 @@ const OriginalTiles = (props) => {
             oldState.push(data);
         }
         
-
         setDataComparison(oldState);
         
         if (dataComparison.length === 2) {
-            console.log(dataComparison)
             if(dataComparison[0].urls.full === dataComparison[1].urls.full) {
                 // set interval optional to have 
-                console.log('matched')
                 props.matchCondition(dataComparison[0], true);
                 props.matchCondition(dataComparison[1], true);
-                // once cniditons are true, clear it out
-                alert('You found the match!')
+                // once conditions are true, clear it out
                 setDataComparison([]);
-
             } else {
-                console.log('not matched');
                 props.matchCondition(dataComparison[0], false);
                 props.matchCondition(dataComparison[1], false);
+                props.tileCondition(dataComparison[0]);
+                props.tileCondition(dataComparison[1]);
                 setDataComparison([]);
             }
         } 
-
     }
+
+    const handleTileSelection = (data) => props.tileCondition(data);
+
     return(
         <>
             {
@@ -50,8 +46,10 @@ const OriginalTiles = (props) => {
                     return(
                        <SingleTile 
                         compareImage={compareSelection} 
+                        handleTileSelection={handleTileSelection}
+                        key={onePhoto.id}
                         onePhoto={onePhoto} 
-                        key={onePhoto.id}/>
+                        />
                     )
                 })
             }

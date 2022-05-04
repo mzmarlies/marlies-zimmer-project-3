@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+// STYLES:
+import './styles/sass/App.scss';
+// COMPONENTS:
+import ApiImages from './components/ApiImages';
 
 function App() {
-  return (
+
+  // returning JSX to the page:
+  return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="full-page">
+        <div className="content">
+          <header>
+              <h1>Memory Test</h1>
+              <h2>Click the tiles to find a matching set!</h2>
+          </header>
+          <ApiImages />
+        </div>
+        <footer>
+          <a href="https://junocollege.com">Created at Juno College</a>
+        </footer>
+      </div>
     </div>
   );
 }
 
+
 export default App;
+
+

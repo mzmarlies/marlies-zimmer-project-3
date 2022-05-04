@@ -1,0 +1,47 @@
+.box {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    cursor: pointer;
+    
+    .tile-cover {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        border-radius: 10px;
+        
+        img {
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+
+    .active {
+        .tile-cover {
+            transform: perspective(1000px) rotateY(180deg);
+            img {
+                display: block;
+                box-shadow: 2px 2px 10px white,
+                -2px -2px 10px white;
+            }
+        }
+    }
+    .inactive {
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: linear-gradient(200deg, navy, rgba(255, 0, 0, 0)),
+        linear-gradient(200deg, rgb(255, 0, 234), rgba(0, 255, 0, 0)),
+        linear-gradient(300deg, pink, rgba(0, 0, 255, 0));
+        border-radius: 10px;
+        box-shadow: 0.5px 0.5px 2px white, -0.5px -0.5px 2px white;
+
+        .tile-cover {
+            img {
+                display: none;
+            }
+        }
+    }
+}
+

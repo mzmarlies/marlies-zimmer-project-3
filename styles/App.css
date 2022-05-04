@@ -1,0 +1,142 @@
+body {
+  background-color: peachpuff;
+}
+body h1 {
+  color: darkgreen;
+  font-size: 50px;
+}
+body img {
+  width: 100%;
+  height: 100%;
+}
+body .wrapper {
+  max-width: 1280px;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+.box .image-container,
+.box .back {
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transition: 2s;
+  transition: 2s;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.box .image-container {
+  -webkit-transform: perspective(1000px) rotateY(0deg);
+          transform: perspective(1000px) rotateY(0deg);
+  z-index: 1;
+}
+.box .back {
+  background-color: navy;
+  -webkit-transform: perspective(1000px) rotateY(180deg);
+          transform: perspective(1000px) rotateY(180deg);
+  z-index: 2;
+}
+.box img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+
+.active {
+  -webkit-transform: perspective(1000px) rotateY(-180deg);
+          transform: perspective(1000px) rotateY(-180deg);
+  z-index: 2;
+}
+
+.gameboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+}
+.gameboard .tile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.gameboard .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    -webkit-animation: App-logo-spin infinite 20s linear;
+            animation: App-logo-spin infinite 20s linear;
+  }
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@-webkit-keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}

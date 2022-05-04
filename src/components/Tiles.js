@@ -2,7 +2,7 @@ import { useState} from "react";
 
 import SingleTile from './SingleTile'
 
-const OriginalTiles = (props) => {
+const Tiles = (props) => {
 
     const [ dataComparison, setDataComparison ] = useState([])
     
@@ -57,4 +57,4 @@ const OriginalTiles = (props) => {
     )
 }
 
-export default OriginalTiles;
+export default Tiles;

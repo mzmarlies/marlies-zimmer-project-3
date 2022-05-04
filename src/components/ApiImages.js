@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 // COMPONENTS:
-import OriginalTiles from './OriginalTiles';
+import Tiles from './Tiles';
 
 const ApiImages = () => {
 
@@ -91,7 +91,7 @@ const ApiImages = () => {
     <div className="App">
       <div className="wrapper">
         <div className="gameboard">
-          <OriginalTiles 
+          <Tiles 
             photos={mergedImages} 
             matchCondition={handleMatchCondition} 
             tileCondition={handleTileCondition}

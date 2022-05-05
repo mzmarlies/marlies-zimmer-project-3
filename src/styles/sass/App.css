@@ -79,7 +79,7 @@ h1 {
   font-size: 3.1rem;
   margin: 15px;
   padding-top: 10px;
-  text-shadow: 1px 1px 4px rgb(255, 0, 234), -1px -1px 4px rgb(255, 0, 234);
+  text-shadow: 2px 2px 4px rgb(255, 0, 234), -2px -2px 4px rgb(255, 0, 234);
 }
 
 h2 {
@@ -118,6 +118,125 @@ footer a {
   text-shadow: 0.1px 0.1px white;
 }
 
+@media (max-width: 1280px) {
+  .gameboard {
+    width: 90%;
+  }
+}
+@media (max-width: 980px) {
+  .box {
+    width: 115px;
+    height: 115px;
+  }
+
+  .gameboard {
+    width: 100%;
+  }
+}
+@media (max-width: 900px) {
+  .box {
+    width: 110px;
+    height: 110px;
+  }
+}
+@media (max-width: 768px) {
+  .box {
+    width: 100px;
+    height: 100px;
+  }
+}
+@media (max-width: 680px) {
+  .box {
+    width: 90px;
+    height: 90px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .box {
+    width: 85px;
+    height: 85px;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 560px) {
+  .box {
+    width: 80px;
+    height: 80px;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 495px) {
+  .box {
+    width: 75px;
+    height: 75px;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .gameboard {
+    margin-top: 10px;
+  }
+
+  footer {
+    margin-top: 0;
+  }
+}
+@media (max-width: 400px) {
+  .box {
+    width: 70px;
+    height: 70px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 380px) {
+  .box {
+    width: 65px;
+    height: 65px;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+  }
+
+  h2 {
+    font-size: 0.9rem;
+  }
+}
 .App {
   text-align: center;
 }

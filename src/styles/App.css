@@ -111,14 +111,22 @@ h1 {
   text-shadow: 2px 2px 4px rgb(255, 0, 234), -2px -2px 4px rgb(255, 0, 234);
 }
 
-h2 {
+h2,
+h3 {
   text-align: center;
   width: 70%;
-  font-style: italic;
   color: #ff8add;
   margin: 0 auto;
   font-size: 1.7rem;
   text-shadow: 2px 2px 4px navy, -2px -2px 4px navy;
+}
+
+h3 {
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding-top: 10px;
+  text-shadow: 1px 1px 4px navy, -1px -1px 4px navy;
 }
 
 img {
@@ -208,6 +216,10 @@ footer a {
   h2 {
     font-size: 1.3rem;
   }
+
+  h3 {
+    font-size: 1.2rem;
+  }
 }
 @media (max-width: 560px) {
   .box {
@@ -222,6 +234,10 @@ footer a {
   h2 {
     font-size: 1.2rem;
   }
+
+  h3 {
+    font-size: 1.1rem;
+  }
 }
 @media (max-width: 495px) {
   .box {
@@ -234,7 +250,11 @@ footer a {
   }
 
   h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 1rem;
   }
 
   .gameboard {
@@ -255,8 +275,8 @@ footer a {
     font-size: 2.2rem;
   }
 
-  h2 {
-    font-size: 1rem;
+  h3 {
+    font-size: 0.9rem;
   }
 }
 @media (max-width: 380px) {
@@ -266,11 +286,15 @@ footer a {
   }
 
   h1 {
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
 
   h2 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  h3 {
+    font-size: 0.8rem;
   }
 }
 .App {

@@ -13,6 +13,7 @@ function App() {
           <header>
               <h1>Memory Test</h1>
               <h2>Click the tiles to find a matching set!</h2>
+              <h3>(Tiles will remain flipped when matched)</h3>
           </header>
           <ApiImages />
         </div>
